@@ -1,0 +1,117 @@
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-label>
+      <h2>Restaurant Menu</h2>
+      <p>Habib Dev.</p>
+    </ion-label>
+
+    <ion-avatar slot="end" (click)="presentPopover(event)">
+      <img src="https://yt3.ggpht.com/a-/AOh14GjThP6xpdHXuwV9tVt7wMvBIytCfvZm4N_BkN1MrA=s288-c-k-c0xffffffff-no-rj-mo">
+    </ion-avatar>
+
+  </ion-item>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<div class="ion-padding wrapper">
+
+  <ion-searchbar></ion-searchbar>
+
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-align-items-baseline">
+      <ion-col size="6">
+        <h4 class="title">
+          <ion-badge color="light" >
+            Popular Dishes
+          </ion-badge>
+        </h4>
+      </ion-col>
+      <ion-col size="6">
+        <p class="ion-text-end">
+          <ion-badge color="light" class="ion-badge">
+            View more
+          </ion-badge>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  </div>
+
+  <app-popular-dishes [products]="products"></app-popular-dishes>
+
+
+  	<div class="ion-padding-horizontal wrapper">
+  
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-align-items-baseline">
+          <ion-col size="6">
+            <h4 class="title">
+              <ion-badge color="light" >
+                Explore Categories
+              </ion-badge>
+            </h4>
+          </ion-col>
+          <ion-col size="6">
+            <p class="ion-text-end">
+              <ion-badge color="light" class="ion-badge">
+                Show more
+              </ion-badge>
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+	</div>	
+  
+    <app-categories [categories]="categoriez"></app-categories>
+
+
+    <div class="ion-padding-horizontal wrapper">
+    
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-align-items-baseline">
+          <ion-col size="6">
+            <h4 class="title">
+              <ion-badge color="light" >
+                Reccommended Drinks
+              </ion-badge>
+            </h4>
+          </ion-col>
+          <ion-col size="6">
+            <p class="ion-text-end">
+              <ion-badge color="light" class="ion-badge">
+                View more
+              </ion-badge>
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+	</div>
+    
+    <app-popular-drinks></app-popular-drinks>
+    
+	<div class="ion-padding">
+        <ion-row>
+          <ion-col size="6">
+            <ion-badge color="light" class="ion-margin-end">
+              Habib Dev.
+            </ion-badge>
+          </ion-col>
+          <ion-col size="6" class="ion-text-end">
+            <ion-badge color="light">
+              habib.al-mawali.com
+            </ion-badge>
+          </ion-col>
+        </ion-row>
+	</div>
+
+
+</ion-content>

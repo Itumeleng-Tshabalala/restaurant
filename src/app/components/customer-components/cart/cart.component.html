@@ -1,0 +1,13 @@
+<div class="ion-padding wrapper" *ngIf="cart.length > 0; else empty">
+
+  <ion-item *ngFor="let product of cart">
+    <h2>{{product.getProductName()}}</h2>
+    <p>{{product.getProductQuantity()}}</p>
+  </ion-item>
+  <ion-button color="primary" shape="round">Check Out</ion-button>
+  
+</div>
+
+<ng-template #empty>
+  <p>Nothing</p>
+</ng-template>
