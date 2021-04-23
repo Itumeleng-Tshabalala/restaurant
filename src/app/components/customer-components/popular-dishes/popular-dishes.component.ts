@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AnimationController, PopoverController } from '@ionic/angular';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/structure/classes/Product';
 import { IProduct } from 'src/app/structure/interfaces';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 
 @Component({
   selector: 'app-popular-dishes',
@@ -11,8 +13,8 @@ import { IProduct } from 'src/app/structure/interfaces';
 })
 export class PopularDishesComponent implements OnInit {
 
-  @Input() products: IProduct[] = [];
-  
+  @Input() products: Product[] = [];
+
   options = {
     centeredSlides: true,
     slidesPerView: 1,
@@ -22,22 +24,30 @@ export class PopularDishesComponent implements OnInit {
   categories = {
     slidesPerView: 2.5,
   };
-  
+
   constructor(
     private _cartService: CartService,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private animationCtrl: AnimationController,
+    public popoverController: PopoverController
   ) { }
 
   ngOnInit() {}
 
-  addToCart(product: IProduct) {
-    let temp_product: Product;
-    temp_product = new Product(
-      product.id, 
-      product.name, 
-      product.price
-    );
-    this._cartService.addToCart(temp_product);
+  addToCart(product: Product) {
+    this._cartService.addToCart(product);
   }
 
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: ProductDetailsComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    await popover.present();
+
+    const { role } = await popover.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
 }

@@ -8,6 +8,7 @@ import { CartComponent } from 'src/app/components/customer-components/cart/cart.
 import { ProductService } from 'src/app/services/product/product.service';
 import { ICategory, IProduct } from 'src/app/structure/interfaces';
 import { CategoryService } from 'src/app/services/category/category.service';
+import { Product } from 'src/app/structure/classes/Product';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,9 @@ import { CategoryService } from 'src/app/services/category/category.service';
 })
 export class HomePage implements OnInit {
 
-  products: IProduct[] = [];
+  products: Product[] = [];
   categoriez: ICategory[] = [];
-  
+
   options = {
     centeredSlides: true,
     slidesPerView: 1,
@@ -28,7 +29,7 @@ export class HomePage implements OnInit {
   categories = {
     slidesPerView: 2.5,
   };
-  
+
   constructor(
     private _storageService: StorageService,
     private _productService: ProductService,
@@ -45,14 +46,11 @@ export class HomePage implements OnInit {
 
   // Set products
   getProducts() {
+    let temp_Product: Product;
     this._productService.getProducts().subscribe(
       (responses) => {
         responses.map(product => {
-          this.products.push({
-            id: product.getProductId(),
-            name: product.getProductName(),
-            price: product.getProductPrice()
-          });
+          this.products.push(product);
         })
       }
     )
@@ -86,5 +84,5 @@ export class HomePage implements OnInit {
     console.log('onDidDismiss resolved with role', role);
   }
 
-  
+
 }

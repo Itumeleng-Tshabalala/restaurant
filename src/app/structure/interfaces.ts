@@ -6,11 +6,6 @@ export interface IProduct {
     price: number;
 }
 
-export interface ICart {
-    product: IProduct;
-    quantity: number;
-}
-
 export interface ICategory{
     name: string;
     color: string;

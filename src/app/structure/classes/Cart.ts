@@ -1,40 +1,44 @@
-import { ICart, IProduct } from "../interfaces"
+import { Product } from "./Product";
 
 export class Cart{
 
-    private product: IProduct;
-    private quantity: number;
+  private product: Product;
+  private quantity: number;
 
-    constructor(product, quantity) {
-        this.quantity = quantity;
-        this.product = product;
-    }
+  constructor(product: Product, quantity: number) {
+    this.quantity = quantity;
+    this.product = new Product(
+      product.getProductId(),
+      product.getProductName(),
+      product.getProductPrice()
+    );
+  }
 
-    getProduct() : IProduct {
-        return this.product;
-    }
+  getProduct() : Product {
+  	return this.product;
+  }
 
-    getProductId() : string {
-        return this.product.id;
-    }
+  getProductId() : string {
+    return this.product.getProductId();
+  }
 
-    getProductName() : string {
-        return this.product.name;
-    }
+  getProductName() : string {
+	  return this.product.getProductName();
+  }
 
-    getProductPrice() : number {
-        return this.product.price;
-    }
+  getProductPrice() : number {
+	  return this.product.getProductPrice();
+  }
 
-    getProductQuantity() : number {
-        return this.quantity;
-    }
+  getProductQuantity() : number {
+	  return this.quantity;
+  }
 
-    setProductQuantity() : void{
-        this.quantity++;
-    }
+  setProductQuantity() : void{
+	  this.quantity++;
+  }
 
-    calculateTotalAmount() : number {
-        return this.product.price * this.quantity;
-    }
+  calculateTotalAmount() : number {
+	  return this.product.getProductPrice() * this.quantity;
+  }
 }

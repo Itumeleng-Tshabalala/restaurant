@@ -3,42 +3,37 @@ import { Observable, of } from "rxjs";
 
 export class Product {
 
-    private product: IProduct;
+  private id;
+  private name;
+  private price;
 
-    constructor(id: string, name: string, price: number) {
-        this.product = {
-            id,
-            name,
-            price,
-        }
-    }
+  constructor(id: string, name: string, price: number) {
+    this.id = id,
+    this.name = name,
+    this.price = price
+  }
 
-    getProduct(): IProduct{
-        return this.product;
-    }
+  setProductId(id: string) {
+    this.id = id;
+  }
 
-    setProductId(id: string) {
-        this.product.id = id;
-    }
+  getProductId() : string {
+    return this.id;
+  }
 
-    getProductId() : string {
-        return this.product.id;
-    }
+  setProductName(name: string) {
+    this.name = name;
+  }
 
-    setProductName(name: string) {
-        this.product.name = name;
-    }
+  getProductName() : string {
+    return this.name;
+  }
 
-    getProductName() : string {
-        return this.product.name;
-    }
+  setProductPrice(price: number) : void {
+    this.price = price;
+  }
 
-    setProductPrice(price: number) : void {
-        this.product.price = price;
-    }
-
-    getProductPrice() : number {
-        return this.product.price;
-    }
-
+  getProductPrice() : number {
+    return this.price;
+  }
 }

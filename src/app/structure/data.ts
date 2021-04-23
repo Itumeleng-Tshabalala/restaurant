@@ -1,19 +1,20 @@
-import { ICart, ICategory, IProduct } from "./interfaces";
+import { Cart } from "./classes/Cart";
+import { ICategory, IProduct } from "./interfaces";
+
+export let CART: Cart[] = [];
 
 export const PRODUCTS: IProduct[] = [
-    {
-        id: '1',
-        name: 'number 1',
-        price: 1000
-    },
-    {
-        id: '2',
-        name: 'number 2',
-        price: 1000
-    }
+  {
+      id: '1',
+      name: 'number 1',
+      price: 1000
+  },
+  {
+      id: '2',
+      name: 'number 2',
+      price: 1000
+  }
 ];
-
-export let CART: ICart[] = [];
 
 export const CATEGORIES: ICategory[] = [
     {
