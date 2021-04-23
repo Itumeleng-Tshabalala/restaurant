@@ -77,16 +77,24 @@ ion-item {
     padding-bottom: 0;
   }
 
-  ion-badge{
-    padding: 10px;
-    font-size: 14px;
-  }
+  // ion-badge{
+  //   padding: 10px;
+  //   font-size: 14px;
+  // }
   .ion-badge {
     color: #3880ff;
     font-size: 11px;
   }
 
-  .bagde {
-    top: -10px;
-    right: -2px
+  ion-button {
+    ion-badge {
+      position: absolute;
+      top: -0rem;
+      right: -0.2rem;
+      opacity: 0.9;
+
+      & ~ ion-icon {
+        margin-right: 1.4rem;
+      }
+    }
   }

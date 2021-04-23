@@ -38,12 +38,15 @@ export class PopularDishesComponent implements OnInit {
     this._cartService.addToCart(product);
   }
 
-  async presentPopover(ev: any) {
+  async presentPopover(ev: any, product: Product) {
     const popover = await this.popoverController.create({
       component: ProductDetailsComponent,
       cssClass: 'my-custom-class',
       event: ev,
-      translucent: true
+      translucent: true,
+      componentProps: {
+        product: product
+      }
     });
     await popover.present();
 

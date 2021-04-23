@@ -1,11 +1,35 @@
 <div class="ion-padding wrapper" *ngIf="cart.length > 0; else empty">
-  <ion-item *ngFor="let product of cart">
-    <h2>{{product.product.getProductName()}}</h2>
-    <p>{{product.getProductQuantity()}}</p>
+
+  <ion-item lines="full" *ngFor="let product of cart">
+    <ion-avatar slot="start" (click)="presentPopover(event)">
+      <img src="https://yt3.ggpht.com/a-/AOh14GjThP6xpdHXuwV9tVt7wMvBIytCfvZm4N_BkN1MrA=s288-c-k-c0xffffffff-no-rj-mo">
+    </ion-avatar>
+    <ion-label class="ion-text-wrap">
+      <h2>{{product.getProductName()}}</h2>
+      <p>{{product.getProductName()}}.</p>
+    </ion-label>
+    <ion-icon name="information-circle" size="large" slot="end"></ion-icon>
   </ion-item>
-  <ion-button color="primary" shape="round">Check Out</ion-button>
+
+
+
 </div>
 
+<footer class="ion-padding">
+  <ion-button color="primary" size="small" shape="round" expand="full">Check Out</ion-button>
+</footer>
+
 <ng-template #empty>
-  <p>Nothing</p>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-wrap">
+          <h3>text-wrap</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
 </ng-template>

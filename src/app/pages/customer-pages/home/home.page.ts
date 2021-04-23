@@ -76,7 +76,7 @@ export class HomePage implements OnInit {
       component: CartComponent,
       cssClass: 'my-custom-class',
       event: ev,
-      translucent: true
+      translucent: true,
     });
     await popover.present();
 
