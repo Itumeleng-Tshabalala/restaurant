@@ -6,13 +6,15 @@ export let CART: Cart[] = [];
 export const PRODUCTS: IProduct[] = [
   {
       id: '1',
-      name: 'number 1',
-      price: 1000
+      name: 'Cheese Boy',
+      price: 1000,
+      categoty: 'burger'
   },
   {
       id: '2',
-      name: 'number 2',
-      price: 1000
+      name: 'Skhambani',
+      price: 1000,
+      categoty: 'burger'
   }
 ];
 

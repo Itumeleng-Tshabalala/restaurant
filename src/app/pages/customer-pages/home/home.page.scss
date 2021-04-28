@@ -90,11 +90,11 @@ ion-item {
     ion-badge {
       position: absolute;
       top: -0rem;
-      right: -0.2rem;
+      right: -0.01rem;
       opacity: 0.9;
 
       & ~ ion-icon {
-        margin-right: 1.4rem;
+        margin-left: -2.3rem;
       }
     }
   }

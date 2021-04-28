@@ -1,23 +1,48 @@
 <div class="ion-padding wrapper" *ngIf="cart.length > 0; else empty">
 
   <ion-item lines="full" *ngFor="let product of cart">
-    <ion-avatar slot="start" (click)="presentPopover(event)">
+    <ion-avatar slot="start" (click)="presentPopover(event, product)">
       <img src="https://yt3.ggpht.com/a-/AOh14GjThP6xpdHXuwV9tVt7wMvBIytCfvZm4N_BkN1MrA=s288-c-k-c0xffffffff-no-rj-mo">
     </ion-avatar>
-    <ion-label class="ion-text-wrap">
-      <h2>{{product.getProductName()}}</h2>
-      <p>{{product.getProductName()}}.</p>
+
+    <ion-label (click)="presentPopover(event, product)" class="ion-text-wrap">
+      <h3 >{{product.getProductName()}}</h3>
+      <p>Quantity: {{product.getProductQuantity()}}.</p>
     </ion-label>
-    <ion-icon name="information-circle" size="large" slot="end"></ion-icon>
+
+    <ion-buttons slot="end">
+      <ion-button shape="round">
+        <ion-icon name="trash-outline" icon-only size="small" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
   </ion-item>
 
-
-
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-align-items-baseline">
+      <ion-col size="6">
+        <h4 class="title">
+          <ion-badge color="light" >
+            Total:
+          </ion-badge>
+        </h4>
+      </ion-col>
+      <ion-col size="6">
+        <p class="ion-text-end">
+          <ion-badge color="light" class="ion-badge">
+            R {{total}}
+          </ion-badge>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </div>
 
-<footer class="ion-padding">
+<footer class="ion-padding" *ngIf="cart.length > 0">
   <ion-button color="primary" size="small" shape="round" expand="full">Check Out</ion-button>
 </footer>
+
+
 
 <ng-template #empty>
   <ion-grid>

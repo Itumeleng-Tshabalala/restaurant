@@ -9,6 +9,9 @@ import { ProductService } from 'src/app/services/product/product.service';
 import { ICategory, IProduct } from 'src/app/structure/interfaces';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Product } from 'src/app/structure/classes/Product';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +20,8 @@ import { Product } from 'src/app/structure/classes/Product';
 })
 export class HomePage implements OnInit {
 
+  total: number = 0;
+  quantity: number = 0;
   products: Product[] = [];
   categoriez: ICategory[] = [];
 
@@ -31,6 +36,8 @@ export class HomePage implements OnInit {
   };
 
   constructor(
+    private router: Router,
+    private _cartService: CartService,
     private _storageService: StorageService,
     private _productService: ProductService,
     private _categoryService: CategoryService,
@@ -42,6 +49,21 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getCategories();
+    this.getTotalQuantity();
+  }
+
+  goToMore() {
+    this.router.navigateByUrl('more');
+  }
+
+  search(event) {
+    this._productService.searchProduct(event.target.value).subscribe(
+      products => {
+        if(products) {
+          this.products = products;
+        }
+      }
+    );
   }
 
   // Set products
@@ -67,6 +89,15 @@ export class HomePage implements OnInit {
             name: category.name
           });
         });
+      }
+    )
+  }
+
+  // Get total Quantity
+  getTotalQuantity() {
+    this._cartService.getCartQuantity().subscribe(
+      quantity => {
+        this.quantity = quantity;
       }
     )
   }

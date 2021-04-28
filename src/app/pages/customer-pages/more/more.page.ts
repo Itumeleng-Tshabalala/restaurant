@@ -1,21 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimationController, PopoverController } from '@ionic/angular';
+import { ProductDetailsComponent } from 'src/app/components/customer-components/product-details/product-details.component';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductService } from 'src/app/services/product/product.service';
-import { Cart } from 'src/app/structure/classes/Cart';
 import { Product } from 'src/app/structure/classes/Product';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
-// import { ICart } from 'src/app/structure/interfaces';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss'],
+  selector: 'app-more',
+  templateUrl: './more.page.html',
+  styleUrls: ['./more.page.scss'],
 })
-export class CartComponent implements OnInit {
-
-  total: number = 0;
-  cart: Cart[] = [];
+export class MorePage implements OnInit {
 
   constructor(
     private _cartService: CartService,
@@ -24,32 +19,10 @@ export class CartComponent implements OnInit {
     public popoverController: PopoverController
   ) { }
 
-  ngOnInit() {
-    this.getCart();
-    this.getCartTotal();
-  }
+  ngOnInit() {}
 
   addToCart(product: Product) {
     this._cartService.addToCart(product);
-  }
-
-  getCart() {
-    let temp_cart: Cart;
-    this._cartService.getCart().subscribe(
-      cart => {
-        this.cart = cart.map(item => {
-          return item;
-        });
-      }
-    );
-  }
-
-  getCartTotal() {
-    this._cartService.getCartTotal().subscribe(
-      total => {
-        this.total = total;
-      }
-    );
   }
 
   async presentPopover(ev: any, product: Product) {
@@ -67,4 +40,5 @@ export class CartComponent implements OnInit {
     const { role } = await popover.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
   }
+
 }

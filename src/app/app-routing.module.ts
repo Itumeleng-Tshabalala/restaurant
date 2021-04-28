@@ -10,7 +10,11 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/driver-pages/home/home.module').then( m => m.HomePageModule)
   },
-  
+  {
+    path: 'more',
+    loadChildren: () => import('./pages/customer-pages/more/more.module').then( m => m.MorePageModule)
+  },
+
 ];
 
 @NgModule({

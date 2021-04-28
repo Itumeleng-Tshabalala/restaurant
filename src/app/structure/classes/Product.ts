@@ -1,16 +1,15 @@
-import { IProduct } from "../interfaces";
-import { Observable, of } from "rxjs";
-
 export class Product {
 
   private id;
   private name;
   private price;
+  private category;
 
-  constructor(id: string, name: string, price: number) {
+  constructor(id: string, name: string, price: number, category: string) {
     this.id = id,
     this.name = name,
-    this.price = price
+    this.price = price,
+    this.category = category
   }
 
   setProductId(id: string) {
@@ -35,5 +34,13 @@ export class Product {
 
   getProductPrice() : number {
     return this.price;
+  }
+
+  getProductCategory() : string {
+    return this.category;
+  }
+
+  setProductCategory(category: string) {
+    this.category = category;
   }
 }

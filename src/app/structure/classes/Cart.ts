@@ -10,7 +10,8 @@ export class Cart{
     this.product = new Product(
       product.getProductId(),
       product.getProductName(),
-      product.getProductPrice()
+      product.getProductPrice(),
+      product.getProductCategory()
     );
   }
 

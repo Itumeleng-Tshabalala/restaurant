@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Cart } from 'src/app/structure/classes/Cart';
 import { Product } from 'src/app/structure/classes/Product';
 import { CART } from 'src/app/structure/data';
@@ -10,16 +10,50 @@ import { IProduct } from 'src/app/structure/interfaces';
 })
 export class CartService {
 
+  total: BehaviorSubject<number> = new BehaviorSubject<number>(0.0);
+  quantity: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
   constructor() { }
 
   getCart() : Observable<Cart[]> {
     return of(CART);
   }
 
-  getCartItemById(product_id: string) : Cart {
-    return CART.find(item => {
+  getCartTotal() :BehaviorSubject<number> {
+    return this.total;
+  }
+
+  getCartQuantity() : BehaviorSubject<number> {
+    return this.quantity;
+  }
+
+  searchProduct(search: string) {
+    let regExp = /Number/g;
+
+
+  }
+
+  getCartItemById(product_id: string) : Observable<Cart> {
+    return of(CART.find(item => {
       return item.getProductId() === product_id;
-    })
+    }));
+  }
+
+  setCartQuantity(): void {
+    let quantity: number = 0;
+    CART.map(item => {
+      quantity += item.getProductQuantity();
+      // console.log(item.getProductQuantity());
+    });
+    this.quantity.next(quantity);
+  }
+
+  setCartTotal() : void {
+    let total: number = 0;
+    CART.map(item => {
+      total += item.calculateTotalAmount();
+    });
+    this.total.next(total);
   }
 
   checkDuplicate(product_id: string) : boolean {
@@ -34,13 +68,19 @@ export class CartService {
   addToCart(product: Product) : void {
     let temp_cart: Cart;
     if(this.checkDuplicate(product.getProductId())) {
-      temp_cart = this.getCartItemById(product.getProductId());
-      temp_cart.setProductQuantity();
+      this.getCartItemById(product.getProductId()).subscribe(
+        item => {
+          temp_cart = item;
+          temp_cart.setProductQuantity();
+        }
+      );
     }
     else {
       temp_cart = new Cart(product, 1);
       CART.push(temp_cart);
     }
+    this.setCartTotal();
+    this.setCartQuantity();
   }
 
 }

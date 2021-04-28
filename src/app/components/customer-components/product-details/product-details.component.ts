@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AnimationController, PopoverController } from '@ionic/angular';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { Product } from 'src/app/structure/classes/Product';
 
@@ -20,5 +21,6 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(product: Product) {
     this._cartService.addToCart(product);
   }
+
 
 }

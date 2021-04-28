@@ -4,6 +4,7 @@ export interface IProduct {
     id: string;
     name: string;
     price: number;
+    categoty: string;
 }
 
 export interface ICategory{
