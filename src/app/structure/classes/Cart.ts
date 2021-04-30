@@ -1,4 +1,4 @@
-import { Product } from "./Product";
+import { Product } from './Product';
 
 export class Cart{
 
@@ -10,36 +10,27 @@ export class Cart{
     this.product = new Product(
       product.getProductId(),
       product.getProductName(),
+      product.getProductImage(),
       product.getProductPrice(),
-      product.getProductCategory()
+      product.getProductCategory(),
+      product.getProductDescription(),
+      product.getProductAvailability()
     );
   }
 
-  getProduct() : Product {
+  getProduct(): Product {
   	return this.product;
   }
 
-  getProductId() : string {
-    return this.product.getProductId();
-  }
-
-  getProductName() : string {
-	  return this.product.getProductName();
-  }
-
-  getProductPrice() : number {
-	  return this.product.getProductPrice();
-  }
-
-  getProductQuantity() : number {
+  getProductQuantity(): number {
 	  return this.quantity;
   }
 
-  setProductQuantity() : void{
+  setProductQuantity(): void{
 	  this.quantity++;
   }
 
-  calculateTotalAmount() : number {
+  calculateTotalAmount(): number {
 	  return this.product.getProductPrice() * this.quantity;
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Component, Input, OnInit } from '@angular/core';
 import { AnimationController, PopoverController } from '@ionic/angular';
 import { CartService } from 'src/app/services/cart/cart.service';
@@ -32,7 +33,9 @@ export class PopularDishesComponent implements OnInit {
     public popoverController: PopoverController
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.products);
+  }
 
   addToCart(product: Product) {
     this._cartService.addToCart(product);
@@ -45,7 +48,7 @@ export class PopularDishesComponent implements OnInit {
       event: ev,
       translucent: true,
       componentProps: {
-        product: product
+        product
       }
     });
     await popover.present();

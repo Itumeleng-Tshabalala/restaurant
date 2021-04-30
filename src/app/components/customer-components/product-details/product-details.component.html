@@ -2,7 +2,7 @@
   <ion-card-content class="ion-text-left">
 
     <div class="img-wrapper">
-      <ion-img src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"></ion-img>
+      <ion-img src="{{product.getProductImage()}}"></ion-img>
     </div>
 
     <ion-grid>
@@ -13,7 +13,7 @@
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <ion-card-subtitle>Some description here</ion-card-subtitle>
+          <ion-card-subtitle>{{product.getProductDescription()}}</ion-card-subtitle>
         </ion-col>
       </ion-row>
       <ion-row>

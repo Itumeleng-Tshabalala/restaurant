@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { ICategory } from 'src/app/structure/interfaces';
 
 @Component({
@@ -20,8 +21,17 @@ export class CategoriesComponent implements OnInit {
     slidesPerView: 2.5,
   };
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {}
+
+  goToCategories(categoryId: string) {
+    this.router.navigate(['/product-category/'], {
+      queryParams: { id: categoryId }
+    });
+  }
 
 }

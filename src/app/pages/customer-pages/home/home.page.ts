@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Animation, AnimationController } from '@ionic/angular';
@@ -20,8 +21,8 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  total: number = 0;
-  quantity: number = 0;
+  total = 0;
+  quantity = 0;
   products: Product[] = [];
   categoriez: ICategory[] = [];
 
@@ -68,14 +69,13 @@ export class HomePage implements OnInit {
 
   // Set products
   getProducts() {
-    let temp_Product: Product;
     this._productService.getProducts().subscribe(
       (responses) => {
         responses.map(product => {
           this.products.push(product);
-        })
+        });
       }
-    )
+    );
   }
 
   // Set categories
@@ -84,13 +84,14 @@ export class HomePage implements OnInit {
       responses => {
         responses.map(category => {
           this.categoriez.push({
+            id: category.id,
             color: category.color,
             image: category.image,
             name: category.name
           });
         });
       }
-    )
+    );
   }
 
   // Get total Quantity
@@ -99,7 +100,7 @@ export class HomePage implements OnInit {
       quantity => {
         this.quantity = quantity;
       }
-    )
+    );
   }
 
   async presentPopover(ev: any) {

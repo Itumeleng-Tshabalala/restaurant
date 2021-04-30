@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Cart } from 'src/app/structure/classes/Cart';
@@ -15,57 +16,52 @@ export class CartService {
 
   constructor() { }
 
-  getCart() : Observable<Cart[]> {
+  getCart(): Observable<Cart[]> {
     return of(CART);
   }
 
-  getCartTotal() :BehaviorSubject<number> {
+  getCartTotal(): BehaviorSubject<number> {
     return this.total;
   }
 
-  getCartQuantity() : BehaviorSubject<number> {
+  getCartQuantity(): BehaviorSubject<number> {
     return this.quantity;
   }
 
   searchProduct(search: string) {
-    let regExp = /Number/g;
+    const regExp = /Number/g;
 
 
   }
 
-  getCartItemById(product_id: string) : Observable<Cart> {
-    return of(CART.find(item => {
-      return item.getProductId() === product_id;
-    }));
+  getCartItemById(product_id: string): Observable<Cart> {
+    return of(CART.find(item => item.getProduct().getProductId() === product_id));
   }
 
   setCartQuantity(): void {
-    let quantity: number = 0;
+    let quantity = 0;
     CART.map(item => {
       quantity += item.getProductQuantity();
-      // console.log(item.getProductQuantity());
     });
     this.quantity.next(quantity);
   }
 
-  setCartTotal() : void {
-    let total: number = 0;
+  setCartTotal(): void {
+    let total = 0;
     CART.map(item => {
       total += item.calculateTotalAmount();
     });
     this.total.next(total);
   }
 
-  checkDuplicate(product_id: string) : boolean {
-    if(CART.find(item => {
-      return item.getProductId() == product_id;
-    }) != undefined) {
+  checkDuplicate(product_id: string): boolean {
+    if(CART.find(item => item.getProduct().getProductId() === product_id) !== undefined) {
       return true;
     }
     return false;
   }
 
-  addToCart(product: Product) : void {
+  addToCart(product: Product): void {
     let temp_cart: Cart;
     if(this.checkDuplicate(product.getProductId())) {
       this.getCartItemById(product.getProductId()).subscribe(

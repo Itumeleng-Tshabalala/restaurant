@@ -2,11 +2,11 @@
 
   <ion-item lines="full" *ngFor="let product of cart">
     <ion-avatar slot="start" (click)="presentPopover(event, product)">
-      <img src="https://yt3.ggpht.com/a-/AOh14GjThP6xpdHXuwV9tVt7wMvBIytCfvZm4N_BkN1MrA=s288-c-k-c0xffffffff-no-rj-mo">
+      <img src="{{product.getProduct().getProductImage()}}">
     </ion-avatar>
 
-    <ion-label (click)="presentPopover(event, product)" class="ion-text-wrap">
-      <h3 >{{product.getProductName()}}</h3>
+    <ion-label (click)="presentPopover(event, product.getProduct())" class="ion-text-wrap">
+      <h3 >{{product.getProduct().getProductName()}}</h3>
       <p>Quantity: {{product.getProductQuantity()}}.</p>
     </ion-label>
 
@@ -45,16 +45,5 @@
 
 
 <ng-template #empty>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div class="ion-text-wrap">
-          <h3>text-wrap</h3>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
-        </div>
-      </ion-col>
-
-    </ion-row>
-  </ion-grid>
-
+  <img src="./assets/app-images/empty.png">
 </ng-template>

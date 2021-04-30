@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'more',
     loadChildren: () => import('./pages/customer-pages/more/more.module').then( m => m.MorePageModule)
   },
+  {
+    path: 'product-category',
+    loadChildren: () => import('./pages/customer-pages/product-category/product-category.module').then( m => m.ProductCategoryPageModule)
+  },
 
 ];
 

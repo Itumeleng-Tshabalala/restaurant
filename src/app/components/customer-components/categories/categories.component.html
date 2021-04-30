@@ -3,7 +3,7 @@
     <ion-col size="12">
       <ion-slides [options]="cat">
         <ion-slide *ngFor="let category of categories">
-          <ion-card class="category" color="{{category.color}}">
+          <ion-card class="category" color="{{category.color}}" (click)="goToCategories(category.id)">
             <ion-card-header class="ion-text-center">
               <ion-icon src="assets/{{category.image}}"></ion-icon>
               <ion-card-title>{{category.name}}</ion-card-title>

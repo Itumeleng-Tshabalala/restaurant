@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Component, OnInit } from '@angular/core';
 import { AnimationController, PopoverController } from '@ionic/angular';
 import { CartService } from 'src/app/services/cart/cart.service';
@@ -14,7 +15,7 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 })
 export class CartComponent implements OnInit {
 
-  total: number = 0;
+  total = 0;
   cart: Cart[] = [];
 
   constructor(
@@ -34,12 +35,9 @@ export class CartComponent implements OnInit {
   }
 
   getCart() {
-    let temp_cart: Cart;
     this._cartService.getCart().subscribe(
       cart => {
-        this.cart = cart.map(item => {
-          return item;
-        });
+        this.cart = cart.map(item => item);
       }
     );
   }
@@ -59,7 +57,7 @@ export class CartComponent implements OnInit {
       event: ev,
       translucent: true,
       componentProps: {
-        product: product
+        product
       }
     });
     await popover.present();

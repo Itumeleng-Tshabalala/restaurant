@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Component, Input, OnInit } from '@angular/core';
 import { AnimationController, PopoverController } from '@ionic/angular';
 import { CartService } from 'src/app/services/cart/cart.service';

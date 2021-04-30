@@ -7,10 +7,6 @@ ion-item {
     padding-top: 8px;
   }
 
-  h3 {
-    font-weight: bold;
-  }
-
 }
 
 ion-content {
@@ -34,7 +30,7 @@ ion-searchbar {
 .card {
   margin: 0;
   margin-right: 50px;
-  width: 80%;
+  width: 100%;
   box-shadow: none;
   border-radius: 14px;
 }
@@ -94,15 +90,11 @@ ion-button {
   ion-badge {
     position: absolute;
     top: -0rem;
-    right: -0.2rem;
+    right: -0.01rem;
     opacity: 0.9;
 
     & ~ ion-icon {
-      margin-right: 1.4rem;
+      margin-left: -2.3rem;
     }
   }
-}
-
-img {
-  width: 100%;
 }

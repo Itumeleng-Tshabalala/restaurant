@@ -3,33 +3,39 @@ export class Product {
   private id;
   private name;
   private price;
+  private image;
   private category;
+  private available;
+  private description;
 
-  constructor(id: string, name: string, price: number, category: string) {
+  constructor(
+    id: string,
+    name: string,
+    image: string,
+    price: number,
+    category: string,
+    description: string,
+    available: boolean
+  ) {
     this.id = id,
     this.name = name,
+    this.image = image,
     this.price = price,
-    this.category = category
-  }
-
-  setProductId(id: string) {
-    this.id = id;
+    this.category = category,
+    this.description = description,
+    this.available = available
   }
 
   getProductId() : string {
     return this.id;
   }
 
-  setProductName(name: string) {
-    this.name = name;
-  }
-
   getProductName() : string {
     return this.name;
   }
 
-  setProductPrice(price: number) : void {
-    this.price = price;
+  getProductImage() : string {
+    return this.image;
   }
 
   getProductPrice() : number {
@@ -40,7 +46,11 @@ export class Product {
     return this.category;
   }
 
-  setProductCategory(category: string) {
-    this.category = category;
+  getProductDescription() : string {
+    return this.description;
+  }
+
+  getProductAvailability() : boolean {
+    return this.available;
   }
 }
