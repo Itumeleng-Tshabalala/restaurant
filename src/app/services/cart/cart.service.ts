@@ -31,6 +31,7 @@ export class CartService {
   searchProduct(search: string) {
     const regExp = /Number/g;
 
+    regExp.test(search);
 
   }
 
@@ -44,6 +45,16 @@ export class CartService {
       quantity += item.getProductQuantity();
     });
     this.quantity.next(quantity);
+  }
+
+  deleteItem(id: string): void {
+    this.getCartItemById(id).subscribe(
+      item => {
+        item.minusProductQuantity();
+        this.setCartQuantity();
+        this.setCartTotal();
+      }
+    );
   }
 
   setCartTotal(): void {
@@ -67,7 +78,7 @@ export class CartService {
       this.getCartItemById(product.getProductId()).subscribe(
         item => {
           temp_cart = item;
-          temp_cart.setProductQuantity();
+          temp_cart.addProductQuantity();
         }
       );
     }

@@ -12,6 +12,7 @@ export class Cart{
       product.getProductName(),
       product.getProductImage(),
       product.getProductPrice(),
+      product.getProductRate(),
       product.getProductCategory(),
       product.getProductDescription(),
       product.getProductAvailability()
@@ -26,8 +27,12 @@ export class Cart{
 	  return this.quantity;
   }
 
-  setProductQuantity(): void{
+  addProductQuantity(): void{
 	  this.quantity++;
+  }
+
+  minusProductQuantity(): void {
+    this.quantity--;
   }
 
   calculateTotalAmount(): number {

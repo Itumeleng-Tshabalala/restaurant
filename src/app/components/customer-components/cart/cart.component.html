@@ -1,17 +1,17 @@
-<div class="ion-padding wrapper" *ngIf="cart.length > 0; else empty">
+<div class="ion-padding wrapper" *ngIf="cart.length >= 1; else empty">
 
   <ion-item lines="full" *ngFor="let product of cart">
-    <ion-avatar slot="start" (click)="presentPopover(event, product)">
+    <ion-avatar slot="start" (click)="presentPopover(event, product)" *ngIf="product.quantity > 0;">
       <img src="{{product.getProduct().getProductImage()}}">
     </ion-avatar>
 
-    <ion-label (click)="presentPopover(event, product.getProduct())" class="ion-text-wrap">
+    <ion-label (click)="presentPopover(event, product.getProduct())" class="ion-text-wrap" *ngIf="product.quantity > 0;">
       <h3 >{{product.getProduct().getProductName()}}</h3>
       <p>Quantity: {{product.getProductQuantity()}}.</p>
     </ion-label>
 
-    <ion-buttons slot="end">
-      <ion-button shape="round">
+    <ion-buttons slot="end" *ngIf="product.quantity > 0;">
+      <ion-button shape="round" (click)="deleteItem(product.getProduct().getProductId())">
         <ion-icon name="trash-outline" icon-only size="small" slot="end"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -38,12 +38,21 @@
   </ion-grid>
 </div>
 
-<footer class="ion-padding" *ngIf="cart.length > 0">
+<footer class="ion-padding" *ngIf="cart.length > 0" fixed>
   <ion-button color="primary" size="small" shape="round" expand="full">Check Out</ion-button>
 </footer>
 
 
+<div class="wrapper" *ngIf="cart.length <= 0;">
+  <ion-card class="card">
+  <ion-card-content class="ion-text-left">
 
-<ng-template #empty>
-  <img src="./assets/app-images/empty.png">
-</ng-template>
+    <div class="img-wrapper" (click)="presentPopover(event, product)">
+      <ion-img src="../../../../assets/app-images/emptycart.png"></ion-img>
+    </div>
+
+    <ion-card-title class="title" >Your cart is empty, <a (click)="close()">Add</a> products to cart.</ion-card-title>
+
+  </ion-card-content>
+</ion-card>
+</div>

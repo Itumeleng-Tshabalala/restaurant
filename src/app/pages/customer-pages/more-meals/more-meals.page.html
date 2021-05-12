@@ -25,26 +25,26 @@
     <ion-searchbar></ion-searchbar>
   </div>
 
-  <div class="ion-padding wrapper" *ngFor="let product of products">
+  <div class="ion-padding wrapper" *ngFor="let meal of meals">
     <ion-card class="card">
       <ion-card-content class="ion-text-left">
 
-        <div class="img-wrapper" (click)="presentPopover(event, product)">
-          <ion-img src="product.getProductImage()"></ion-img>
+        <div class="img-wrapper" (click)="presentPopover(event, meal)">
+          <ion-img src="meal.getProductImage()"></ion-img>
         </div>
 
         <ion-grid>
           <ion-row class="ion-no-padding">
             <ion-col size="12" class="ion-no-padding app-rate">
-              <ion-card-title class="title" >{{product.getProductName()}}</ion-card-title>
+              <ion-card-title class="title" >{{meal.getProductName()}}</ion-card-title>
             </ion-col>
           </ion-row>
           <ion-row class="ion-no-padding ">
             <ion-col size="6" class="ion-no-padding app-rate">
-              <app-rate [rate]="product.getProductRate()"></app-rate>
+              <app-rate [rate]="meal.getProductRate()"></app-rate>
             </ion-col>
             <ion-col size="6" class="ion-text-right">
-              <ion-button color="primary" size="small" shape="round" (click)="addToCart(product)">Add To Cart</ion-button>
+              <ion-button color="primary" size="small" shape="round" (click)="addToCart(meal)">Add To Cart</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>

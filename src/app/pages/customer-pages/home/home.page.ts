@@ -48,13 +48,16 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.getProducts();
     this.getCategories();
     this.getTotalQuantity();
   }
 
-  goToMore() {
-    this.router.navigateByUrl('more');
+  goToMoreMeals() {
+    this.router.navigateByUrl('more-meals');
+  }
+
+  goToMoreDrinks() {
+    this.router.navigateByUrl('more-drinks');
   }
 
   search(event) {
@@ -67,29 +70,11 @@ export class HomePage implements OnInit {
     );
   }
 
-  // Set products
-  getProducts() {
-    this._productService.getProducts().subscribe(
-      (responses) => {
-        responses.map(product => {
-          this.products.push(product);
-        });
-      }
-    );
-  }
-
   // Set categories
   getCategories(){
     this._categoryService.getCategories().subscribe(
       responses => {
-        responses.map(category => {
-          this.categoriez.push({
-            id: category.id,
-            color: category.color,
-            image: category.image,
-            name: category.name
-          });
-        });
+        this.categoriez = responses;
       }
     );
   }

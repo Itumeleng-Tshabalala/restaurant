@@ -20,14 +20,16 @@ export class CartComponent implements OnInit {
 
   constructor(
     private _cartService: CartService,
-    private _productService: ProductService,
-    private animationCtrl: AnimationController,
     public popoverController: PopoverController
   ) { }
 
   ngOnInit() {
     this.getCart();
     this.getCartTotal();
+  }
+
+  close() {
+    console.log('closing...');
   }
 
   addToCart(product: Product) {
@@ -48,6 +50,10 @@ export class CartComponent implements OnInit {
         this.total = total;
       }
     );
+  }
+
+  deleteItem(id: string) {
+    this._cartService.deleteItem(id);
   }
 
   async presentPopover(ev: any, product: Product) {

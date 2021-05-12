@@ -7,10 +7,6 @@ ion-item {
     padding-top: 8px;
   }
 
-  h3 {
-    font-weight: bold;
-  }
-
 }
 
 ion-content {
@@ -28,9 +24,7 @@ ion-searchbar {
 }
 
 .title {
-  float: center;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
 }
 
 .card {
@@ -52,7 +46,7 @@ ion-searchbar {
 ion-card-content {
   .img-wrapper {
     border-radius: 14px;
-    height: 250px;
+    height: 150px;
     overflow: hidden;
     margin-bottom: 8px;
   }
@@ -83,26 +77,32 @@ ion-card-header {
   padding-bottom: 0;
 }
 
+// ion-badge{
+//   padding: 10px;
+//   font-size: 14px;
+// }
 .ion-badge {
   color: #3880ff;
   font-size: 11px;
 }
 
-ion-button {
-  ion-badge {
-    position: absolute;
-    top: -0rem;
-    right: -0.2rem;
-    opacity: 0.9;
+// ion-button {
+//   ion-badge {
+//     position: absolute;
+//     top: -0rem;
+//     right: -0.01rem;
+//     opacity: 0.9;
 
-    & ~ ion-icon {
-      margin-right: 1.4rem;
-    }
-  }
+//     & ~ ion-icon {
+//       margin-left: -2.3rem;
+//     }
+//   }
+// }
+
+.wrapper:last-of-type {
+  padding-bottom: 15px;
 }
 
-img {
-  width: 100%;
-  padding-top: 0px;
+.app-rate {
+  padding-top: 8px;
 }
-

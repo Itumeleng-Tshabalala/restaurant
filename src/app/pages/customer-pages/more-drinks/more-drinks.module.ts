@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-import { ProductCategoryPageRoutingModule } from './product-category-routing.module';
-import { ProductCategoryPage } from './product-category.page';
+
+import { MoreDrinksPageRoutingModule } from './more-drinks-routing.module';
+
+import { MoreDrinksPage } from './more-drinks.page';
 import { ComponentsModule } from 'src/app/modules/components/components.module';
 
 @NgModule({
@@ -12,9 +14,9 @@ import { ComponentsModule } from 'src/app/modules/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProductCategoryPageRoutingModule,
+    MoreDrinksPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [ProductCategoryPage]
+  declarations: [MoreDrinksPage]
 })
-export class ProductCategoryPageModule {}
+export class MoreDrinksPageModule {}

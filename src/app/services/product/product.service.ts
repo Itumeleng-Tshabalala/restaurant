@@ -10,8 +10,12 @@ import { IProduct } from 'src/app/structure/interfaces';
 })
 export class ProductService {
 
+  meals: Product[] = [];
+  drinks: Product[] = [];
   products: Product[] = [];
   productsByCategory: Product[] = [];
+  popularDrinks: Product[] = [];
+  popularMeals: Product[] = [];
 
   constructor() { }
 
@@ -23,32 +27,106 @@ export class ProductService {
     );
   }
 
+  getMeals(): Observable<Product[]> {
+    this.meals = [];
+    PRODUCTS.map(product => {
+      if(product.category !== '2') {
+        this.meals.push(new Product(
+          product.id,
+          product.name,
+          product.image,
+          product.price,
+          product.rate,
+          product.category,
+          product.description,
+          product.available
+        ));
+      }
+    });
+    return of(this.meals);
+  }
+
+  getDrinks(): Observable<Product[]> {
+    this.drinks = [];
+    PRODUCTS.map(product => {
+      if(product.category === '2') {
+        this.drinks.push(new Product(
+          product.id,
+          product.name,
+          product.image,
+          product.price,
+          product.rate,
+          product.category,
+          product.description,
+          product.available
+        ));
+      }
+    });
+    return of(this.drinks);
+  }
+
+  getPopularMeals(rate): Observable<Product[]> {
+    PRODUCTS.map(product => {
+      if(product.rate >= rate  && product.category !== '2') {
+        this.popularMeals.push(new Product(
+          product.id,
+          product.name,
+          product.image,
+          product.price,
+          product.rate,
+          product.category,
+          product.description,
+          product.available
+        ));
+      }
+    });
+    return of(this.popularMeals);
+  }
+
+  getPopularDrinks(rate) {
+    PRODUCTS.map(product => {
+      if(product.rate >= rate  && product.category === '2') {
+        this.popularDrinks.push(new Product(
+          product.id,
+          product.name,
+          product.image,
+          product.price,
+          product.rate,
+          product.category,
+          product.description,
+          product.available
+        ));
+      }
+    });
+    return of(this.popularDrinks);
+  }
+
   getProductById(product_id: string): Observable<Product> {
-    const temp_product: IProduct = PRODUCTS.find(product => product.id === product_id);
+    const product: IProduct = PRODUCTS.find(prod => prod.id === product_id);
     return of(new Product(
-      temp_product.id,
-      temp_product.name,
-      temp_product.image,
-      temp_product.price,
-      temp_product.category,
-      temp_product.description,
-      temp_product.available,
+      product.id,
+      product.name,
+      product.image,
+      product.price,
+      product.rate,
+      product.category,
+      product.description,
+      product.available,
     ));
   }
 
   getProducts(): Observable<Product[]> {
-    let temp_product: Product;
     PRODUCTS.map(product => {
-      temp_product = new Product(
+      this.products.push(new Product(
         product.id,
         product.name,
         product.image,
         product.price,
+        product.rate,
         product.category,
         product.description,
         product.available
-      );
-      this.products.push(temp_product);
+      ));
     });
     return of(this.products);
   }
@@ -63,6 +141,7 @@ export class ProductService {
             product.name,
             product.image,
             product.price,
+            product.rate,
             product.category,
             product.description,
             product.available

@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-import { ProductCategoryPageRoutingModule } from './product-category-routing.module';
-import { ProductCategoryPage } from './product-category.page';
+
+import { MoreMealsPageRoutingModule } from './more-meals-routing.module';
+
+import { MoreMealsPage } from './more-meals.page';
 import { ComponentsModule } from 'src/app/modules/components/components.module';
 
 @NgModule({
@@ -12,9 +14,9 @@ import { ComponentsModule } from 'src/app/modules/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProductCategoryPageRoutingModule,
+    MoreMealsPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [ProductCategoryPage]
+  declarations: [MoreMealsPage]
 })
-export class ProductCategoryPageModule {}
+export class MoreMealsPageModule {}

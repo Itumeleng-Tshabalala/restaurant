@@ -1,3 +1,16 @@
 ion-tab-bar{
-    --background: rgba(248, 248, 250, .96);
+  --background: rgba(248, 248, 250, .96);
+}
+
+ion-tabs {
+  box-shadow: none;
+}
+
+ion-tab-button {
+  --box-shadow: none;
+  --background: transparent;
+}
+
+ion-badge {
+  font-size: 12px;
 }

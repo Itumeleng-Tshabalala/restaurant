@@ -10,6 +10,11 @@
       <p>Habib Dev.</p>
     </ion-label>
 
+    <ion-buttons slot="end" (click)="presentCartPopover(event)">
+      <ion-icon size="" slot="icon-only" style="left: -20px;" name="cart-outline"></ion-icon>
+      <ion-badge color="primary" style="position: absolute; right: -5px; top: -3px;">{{quantity}}</ion-badge>
+    </ion-buttons>
+
   </ion-item>
 </ion-header>
 

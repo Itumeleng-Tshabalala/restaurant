@@ -9,7 +9,7 @@ export class CategoryService {
 
   constructor() { }
 
-  getCategories(){
+  getCategories() {
     return of(CATEGORIES);
   }
 }

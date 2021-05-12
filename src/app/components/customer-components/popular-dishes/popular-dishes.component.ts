@@ -14,7 +14,7 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 })
 export class PopularDishesComponent implements OnInit {
 
-  @Input() products: Product[] = [];
+  products: Product[] = [];
 
   options = {
     centeredSlides: true,
@@ -34,11 +34,19 @@ export class PopularDishesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.products);
+    this.getPopularMeals();
   }
 
   addToCart(product: Product) {
     this._cartService.addToCart(product);
+  }
+
+  getPopularMeals() {
+    this._productService.getPopularMeals(4).subscribe(
+      products => {
+        this.products = products;
+      }
+    );
   }
 
   async presentPopover(ev: any, product: Product) {
@@ -54,6 +62,6 @@ export class PopularDishesComponent implements OnInit {
     await popover.present();
 
     const { role } = await popover.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
+    // console.log('onDidDismiss resolved with role', role);
   }
 }

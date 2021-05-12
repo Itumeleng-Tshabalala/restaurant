@@ -11,14 +11,24 @@ import { PopularDishesComponent } from 'src/app/components/customer-components/p
 import { PopularDrinksComponent } from 'src/app/components/customer-components/popular-drinks/popular-drinks.component';
 import { CartComponent } from 'src/app/components/customer-components/cart/cart.component';
 import { CategoriesComponent } from 'src/app/components/customer-components/categories/categories.component';
+import { RateComponent } from 'src/app/components/customer-components/rate/rate.component';
+import { ComponentsModule } from 'src/app/modules/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    ComponentsModule
   ],
-  declarations: [HomePage, CartComponent, CategoriesComponent, PopularDishesComponent, PopularDrinksComponent]
+  declarations: [
+    HomePage,
+    // CartComponent,
+    // CategoriesComponent,
+    // PopularDishesComponent,
+    // PopularDrinksComponent,
+    // RateComponent,
+  ]
 })
 export class HomePageModule {}

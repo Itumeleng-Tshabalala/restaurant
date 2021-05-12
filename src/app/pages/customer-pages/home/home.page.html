@@ -6,13 +6,15 @@
     </ion-buttons>
 
     <ion-label>
-      <h2>Restaurant Menu</h2>
-      <p>Habib Dev.</p>
+      <h2>Kitchen Menu</h2>
+      <p>kazzy.dev</p>
     </ion-label>
 
     <ion-buttons slot="end" (click)="presentPopover(event)">
-      <ion-icon size="" slot="icon-only" style="left: -20px;" name="cart-outline"></ion-icon>
-      <ion-badge color="primary" style="position: absolute; right: -5px; top: -3px;">{{quantity}}</ion-badge>
+      <ion-button shape="round">
+        <ion-icon size="" slot="icon-only" style="left: -20px;" name="cart-outline"></ion-icon>
+        <ion-badge color="primary" style="position: absolute; right: -5px; top: -3px;">{{quantity}}</ion-badge>
+      </ion-button>
     </ion-buttons>
 
   </ion-item>
@@ -35,7 +37,7 @@
         </ion-col>
         <ion-col size="6">
           <p class="ion-text-end">
-            <ion-badge color="light" class="ion-badge" (click)="goToMore()">
+            <ion-badge color="light" class="ion-badge" (click)="goToMoreMeals()">
               View more
             </ion-badge>
           </p>
@@ -45,8 +47,7 @@
 
   </div>
 
-  <app-popular-dishes [products]="products"></app-popular-dishes>
-
+  <app-popular-dishes></app-popular-dishes>
 
   	<div class="ion-padding-horizontal wrapper">
 
@@ -59,20 +60,19 @@
               </ion-badge>
             </h4>
           </ion-col>
-          <ion-col size="6">
+          <!-- <ion-col size="6">
             <p class="ion-text-end">
               <ion-badge color="light" class="ion-badge">
                 Show more
               </ion-badge>
             </p>
-          </ion-col>
+          </ion-col> -->
         </ion-row>
       </ion-grid>
 
 	</div>
 
     <app-categories [categories]="categoriez"></app-categories>
-
 
     <div class="ion-padding-horizontal wrapper">
 
@@ -87,7 +87,7 @@
           </ion-col>
           <ion-col size="6">
             <p class="ion-text-end">
-              <ion-badge color="light" class="ion-badge">
+              <ion-badge color="light" class="ion-badge" (click)="goToMoreDrinks()">
                 View more
               </ion-badge>
             </p>
@@ -103,12 +103,12 @@
         <ion-row>
           <ion-col size="6">
             <ion-badge color="light" class="ion-margin-end">
-              Habib Dev.
+              Kazzy Systems.
             </ion-badge>
           </ion-col>
           <ion-col size="6" class="ion-text-end">
             <ion-badge color="light">
-              habib.al-mawali.com
+              kazzy.dev
             </ion-badge>
           </ion-col>
         </ion-row>
