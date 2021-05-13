@@ -65,7 +65,7 @@ export class ProductService {
     return of(this.drinks);
   }
 
-  getPopularMeals(rate): Observable<Product[]> {
+  getPopularMeals(rate: number): Observable<Product[]> {
     PRODUCTS.map(product => {
       if(product.rate >= rate  && product.category !== '2') {
         this.popularMeals.push(new Product(
@@ -83,7 +83,7 @@ export class ProductService {
     return of(this.popularMeals);
   }
 
-  getPopularDrinks(rate) {
+  getPopularDrinks(rate: number): Observable<Product[]> {
     PRODUCTS.map(product => {
       if(product.rate >= rate  && product.category === '2') {
         this.popularDrinks.push(new Product(
